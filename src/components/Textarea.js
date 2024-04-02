@@ -22,15 +22,23 @@ export default function Textarea(props) {
             setClicked(true);
         }
     }
+    const sentenceCase=()=>{
+      const newText = text.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function(captured) {
+        return captured.toUpperCase();
+      });
+      setText(newText);
+    }
   return (
-<div className="m-5 ">
+<div className="m-5" style={props.mystyle}>
   <label htmlFor="box" className="form-label"><h4>{props.heading}</h4></label>
-  <textarea className="form-control mb-3" id="box" onClick={cleartext} onChange={handelonchange} value={text} rows="8" ></textarea>
+  {console.log(props.mystyle)}
+  <textarea style={props.mystyle} className={`form-control  mb-3`} id="box" onClick={cleartext} onChange={handelonchange} value={text} rows="8" ></textarea>
   <div>
   <button type="button" className="btn btn-primary"  onClick={upperCase}>toUpperCase</button>
   <button type="button" className="btn btn-primary m-2" onClick={lowerCase}>toLowerCase</button>
+  <button type="button" className="btn btn-primary" onClick={sentenceCase}>sentenceCase</button>
   </div>
-  <div>
+  <div style={props.mystyle}>
     <h6>Your text summury</h6>
     <p className='mb-1'>{text.split(" ").length} words and {text.length-text.split(" ").length+1} characters</p>
     <p>It takes approx {Math.round(0.48*text.split(" ").length)} seconds to read above paragraph</p>
@@ -38,3 +46,5 @@ export default function Textarea(props) {
 </div>
   )
 }
+
+// bg-${props.mystyle==='light'?'black':'white'}
