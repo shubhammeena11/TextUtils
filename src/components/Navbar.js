@@ -17,12 +17,10 @@ export default function Navbar(props) {
     setHovereds(false);
   };
   let moon = {
-    // color: "blue",
     cursor: hoveredm ? 'pointer' : 'default',
     color: hoveredm ? 'darkblue' : 'lightblue'
   };
   let sun = {
-    // color: "yellow",
     cursor: hovereds ? 'pointer' : 'default',
     color: hovereds ? 'yellow' : 'lightyellow'
   };

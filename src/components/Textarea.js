@@ -16,6 +16,10 @@ export default function Textarea(props) {
         let newtext=text.toLowerCase();
         setText(newtext);
     } 
+    const extraSpace=()=>{
+        let newtext=text.split(/[ ]+/);
+        setText(newtext.join(" "));
+    } 
     const cleartext=()=>{
         if (!clicked) {
             setText(" ");
@@ -37,6 +41,7 @@ export default function Textarea(props) {
   <button type="button" className="btn btn-primary"  onClick={upperCase}>toUpperCase</button>
   <button type="button" className="btn btn-primary m-2" onClick={lowerCase}>toLowerCase</button>
   <button type="button" className="btn btn-primary" onClick={sentenceCase}>sentenceCase</button>
+  <button type="button" className="btn btn-primary m-2" onClick={extraSpace}>extraSpace</button>
   </div>
   <div style={props.mystyle}>
     <h6>Your text summury</h6>
