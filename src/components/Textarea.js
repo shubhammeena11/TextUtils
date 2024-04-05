@@ -27,15 +27,14 @@ export default function Textarea(props) {
         }
     }
     const sentenceCase=()=>{
-      const newText = text.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function(captured) {
+      const newText = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, function(captured) {
         return captured.toUpperCase();
       });
       setText(newText);
     }
   return (
-<div className="m-5" style={props.mystyle}>
-  <label htmlFor="box" className="form-label"><h4>{props.heading}</h4></label>
-  {console.log(props.mystyle)}
+<div className="mx-5 mt-5" style={props.mystyle}>
+  <label htmlFor="box" className="form-label m-3"><h4>{props.heading}</h4></label>
   <textarea style={props.mystyle} className={`form-control  mb-3`} id="box" onClick={cleartext} onChange={handelonchange} value={text} rows="8" ></textarea>
   <div>
   <button type="button" className="btn btn-primary"  onClick={upperCase}>toUpperCase</button>
@@ -51,5 +50,3 @@ export default function Textarea(props) {
 </div>
   )
 }
-
-// bg-${props.mystyle==='light'?'black':'white'}
