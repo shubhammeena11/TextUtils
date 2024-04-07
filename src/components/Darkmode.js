@@ -13,14 +13,22 @@ export default function Darkmode() {
       backgroundColor: "black",
       color: "white",
     });
-    showalert("Dark mode is Enabel","success");
+    showalert("DARK mode is Enabel","success");
   };
   const light = () => {
     setMystyle({
       backgroundColor: "white",
       color: "black",
     });
-    showalert("Light mode is Enabel","success");
+    showalert("LIGHT mode is Enabel","success");
+  };
+  const red = () => {
+    setMystyle({
+      backgroundColor: "pink",
+      color: "black",
+    });
+    showalert("RED mode is Enabel","success");
+    return "laal";
   };
   const [alert,setAlert]=useState(null);
   const showalert= (message,type)=>{
@@ -34,7 +42,7 @@ export default function Darkmode() {
   }
   return (
     <div style={mystyle} className="pb-1">
-      <Navbar  mystyle={mystyle} dark={dark} light={light} />
+      <Navbar  mystyle={mystyle} dark={dark} light={light} red={red}/>
       <Alert alert={alert}/>
       <Textarea mystyle={mystyle}  heading="Enter the text for analyze" />
     </div>

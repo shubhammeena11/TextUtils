@@ -4,6 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 export default function Navbar(props) {
   const [hoveredm, setHoveredm] = useState(false);
   const [hovereds, setHovereds] = useState(false);
+  const [hoveredr, setHoveredr] = useState(false);
   const handleMouseEnterm = () => {
     setHoveredm(true);
   };
@@ -16,13 +17,19 @@ export default function Navbar(props) {
   const handleMouseLeaves = () => {
     setHovereds(false);
   };
+  const handleMouseEnterr = () => {
+    setHoveredr(true);
+  };
+  const handleMouseLeaver = () => {
+    setHoveredr(false);
+  };
   let moon = {
-    cursor: hoveredm ? 'pointer' : 'default',
-    color: hoveredm ? 'darkblue' : 'lightblue'
+    cursor: hoveredm ? "pointer" : "default",
+    color: hoveredm ? "darkblue" : "lightblue",
   };
   let sun = {
-    cursor: hovereds ? 'pointer' : 'default',
-    color: hovereds ? 'yellow' : 'lightyellow'
+    cursor: hovereds ? "pointer" : "default",
+    color: hovereds ? "orange" : "yellow",
   };
   // const [mystle, setMystyle]=useState({
   //   backgroundColor: "white",
@@ -39,7 +46,10 @@ export default function Navbar(props) {
   //   color: "black"
   // });};
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light" style={props.mystyle}>
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light"
+      style={props.mystyle}
+    >
       <div className="container-fluid" style={props.mystyle}>
         <a className="navbar-brand" style={props.mystyle} href="/">
           TextEditor
@@ -58,12 +68,34 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/" style={props.mystyle}>
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="/"
+                style={props.mystyle}
+              >
                 Home
               </a>
             </li>
           </ul>
           <form className="d-flex">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div
+                className="rounded-circle mx-4"
+                onMouseEnter={handleMouseEnterr}
+                onMouseLeave={handleMouseLeaver}
+                style={{
+                  backgroundColor: "pink",
+                  height: "20px",
+                  width: "20px",
+                  border:"2px solid white",
+                  cursor: hoveredr ? "pointer" : "default",
+                  backgroundColor: hoveredr ? "red" : "pink",
+                }}
+                onClick={props.red}
+              ></div>
+            </div>
+
             <div>
               <i
                 className="fas fa-moon p-2"
@@ -71,7 +103,7 @@ export default function Navbar(props) {
                 onMouseEnter={handleMouseEnterm}
                 onMouseLeave={handleMouseLeavem}
                 onClick={props.dark}
-                ></i>
+              ></i>
               <i
                 className="fas fa-sun mx-3 p-2"
                 style={sun}
